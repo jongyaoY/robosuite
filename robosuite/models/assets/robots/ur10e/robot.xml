@@ -1,0 +1,151 @@
+<mujoco model="ur5e">
+    <actuator>
+        <!-- Physical limits of the actuator. -->
+        <!-- Values taken from https://www.universal-robots.com/articles/ur-articles/max-joint-torques/ -->
+        <motor ctrllimited="true" ctrlrange="-330.0 330.0" joint="shoulder_pan_joint" name="torq_j1"/>
+        <motor ctrllimited="true" ctrlrange="-330.0 330.0" joint="shoulder_lift_joint" name="torq_j2"/>
+        <motor ctrllimited="true" ctrlrange="-150.0 150.0" joint="elbow_joint" name="torq_j3"/>
+        <motor ctrllimited="true" ctrlrange="-56.0 56.0" joint="wrist_1_joint" name="torq_j4"/>
+        <motor ctrllimited="true" ctrlrange="-56.0 56.0" joint="wrist_2_joint" name="torq_j5"/>
+        <motor ctrllimited="true" ctrlrange="-56.0 56.0" joint="wrist_3_joint" name="torq_j6"/>
+    </actuator>
+    <asset>
+
+        <material name="Black" specular="0.5" shininess="0.25" rgba="0.033102 0.033102 0.033102 1.000000"/>
+        <material name="JointGrey" specular="0.5" shininess="0.25" rgba="0.278431 0.278431 0.278431 1.000000"/>
+        <material name="LinkGrey" specular="0.5" shininess="0.25" rgba="0.820392 0.820392 0.820392 1.000000"/>
+        <material name="URBlue" specular="0.5" shininess="0.25" rgba="0.490196 0.678431 0.800000 1.000000"/>
+        
+            <!-- base material and mesh -->
+        <mesh name="base_vis_0" file="obj_meshes/base_vis/base_vis_0.obj"/>
+        <mesh name="base_vis_1" file="obj_meshes/base_vis/base_vis_1.obj"/>
+
+            <!-- forearm mesh -->	
+        <mesh name="forearm_vis_0" file="obj_meshes/forearm_vis/forearm_vis_0.obj"/>
+        <mesh name="forearm_vis_1" file="obj_meshes/forearm_vis/forearm_vis_1.obj"/>
+        <mesh name="forearm_vis_2" file="obj_meshes/forearm_vis/forearm_vis_2.obj"/>
+        <mesh name="forearm_vis_3" file="obj_meshes/forearm_vis/forearm_vis_3.obj"/>
+        <mesh name="forearm_vis_4" file="obj_meshes/forearm_vis/forearm_vis_4.obj"/>
+        <mesh name="forearm_vis_5" file="obj_meshes/forearm_vis/forearm_vis_5.obj"/>
+        <mesh name="forearm_vis_6" file="obj_meshes/forearm_vis/forearm_vis_6.obj"/>
+
+            <!-- shoulder material and mesh -->	
+        <mesh name="shoulder_vis_0" file="obj_meshes/shoulder_vis/shoulder_vis_0.obj"/>
+        <mesh name="shoulder_vis_1" file="obj_meshes/shoulder_vis/shoulder_vis_1.obj"/>
+        <mesh name="shoulder_vis_2" file="obj_meshes/shoulder_vis/shoulder_vis_2.obj"/>
+
+            <!-- upperarm material and mesh -->
+        <mesh name="upperarm_vis_0" file="obj_meshes/upperarm_vis/upperarm_vis_0.obj"/>
+        <mesh name="upperarm_vis_1" file="obj_meshes/upperarm_vis/upperarm_vis_1.obj"/>
+        <mesh name="upperarm_vis_2" file="obj_meshes/upperarm_vis/upperarm_vis_2.obj"/>
+        <mesh name="upperarm_vis_3" file="obj_meshes/upperarm_vis/upperarm_vis_3.obj"/>
+        <mesh name="upperarm_vis_4" file="obj_meshes/upperarm_vis/upperarm_vis_4.obj"/>
+        <mesh name="upperarm_vis_5" file="obj_meshes/upperarm_vis/upperarm_vis_5.obj"/>
+        <mesh name="upperarm_vis_6" file="obj_meshes/upperarm_vis/upperarm_vis_6.obj"/>
+        <mesh name="upperarm_vis_7" file="obj_meshes/upperarm_vis/upperarm_vis_7.obj"/>
+
+            <!-- wrist1 material and mesh -->	
+        <mesh name="wrist1_vis_0" file="obj_meshes/wrist1_vis/wrist1_vis_0.obj"/>
+        <mesh name="wrist1_vis_1" file="obj_meshes/wrist1_vis/wrist1_vis_1.obj"/>
+        <mesh name="wrist1_vis_2" file="obj_meshes/wrist1_vis/wrist1_vis_2.obj"/>
+
+            <!-- wrist2 material and mesh -->	
+        <mesh name="wrist2_vis_0" file="obj_meshes/wrist2_vis/wrist2_vis_0.obj"/>
+        <mesh name="wrist2_vis_1" file="obj_meshes/wrist2_vis/wrist2_vis_1.obj"/>
+        <mesh name="wrist2_vis_2" file="obj_meshes/wrist2_vis/wrist2_vis_2.obj"/>
+
+            <!-- wrist3 material and mesh -->	
+        <mesh name="wrist3_vis" file="obj_meshes/wrist3_vis/wrist3_vis.obj"/>
+        
+        <mesh name="base" file="meshes/base.stl" />
+        <mesh name="shoulder" file="meshes/shoulder.stl" />
+        <mesh name="upperarm" file="meshes/upperarm.stl" />
+        <mesh name="forearm" file="meshes/forearm.stl" />
+        <mesh name="wrist1" file="meshes/wrist1.stl" />
+        <mesh name="wrist2" file="meshes/wrist2.stl" />
+        <mesh name="wrist3" file="meshes/wrist3.stl" />
+
+            <!-- camera mesh -->
+        <mesh name="camera_vis" file="obj_meshes/realSense_vis.obj" />
+    </asset>
+    <worldbody>
+        <body name="base" pos="0 0 0">
+            <!-- robot view -->
+            <camera mode="fixed" name="robotview" pos="1.0 0 0.4" quat="0.653 0.271 0.271 0.653"/>
+            <inertial diaginertia="0 0 0" mass="0" pos="0 0 0"/>
+            <!-- mount attached here -->
+	        <geom quat="-1 0 0 0" mesh="base_vis_0" material="Black" type="mesh" contype="0" conaffinity="0" group="1"/>
+	        <geom quat="-1 0 0 0" mesh="base_vis_1" material="LinkGrey" type="mesh" contype="0" conaffinity="0" group="1"/>
+ 
+            <geom quat="-1 0 0 0" type="mesh" rgba="0.7 0.7 0.7 1" mesh="base" name="base_col"/>
+            <body name="shoulder_link" pos="0 0 0.181">
+                <inertial pos="0 0 0" mass="7.778" diaginertia="0.0314743 0.0314743 0.0218756" />
+                <joint name="shoulder_pan_joint" pos="0 0 0" axis="0 0 1" limited="true" range="-6.28319 6.28319" damping="0.001" frictionloss="0.01" />
+                <geom quat="0 0 0 1" mesh="shoulder_vis_0" material="JointGrey" type="mesh" contype="0" conaffinity="0" group="1"/>
+                <geom quat="0 0 0 1" mesh="shoulder_vis_1" material="Black" type="mesh" contype="0" conaffinity="0" group="1"/>
+                <geom quat="0 0 0 1" mesh="shoulder_vis_2" material="URBlue" type="mesh" contype="0" conaffinity="0" group="1"/>
+
+                <geom quat="0 0 0 1" type="mesh" rgba="0.7 0.7 0.7 1" mesh="shoulder" name="shoulder_col" />
+                <body name="upper_arm_link" quat="0.707107 0.707107 0 0">
+                    <inertial pos="-0.306 0 0.175" quat="0.707107 0 0.707107 0" mass="12.93" diaginertia="0.421754 0.421754 0.0363656"/>
+                    <joint name="shoulder_lift_joint" pos="0 0 0" axis="0 0 1" limited="true" range="-6.28319 6.28319" damping="0.001" frictionloss="0.01" />
+                    <geom pos="0 0 0.1762" quat="0.5 0.5 -0.5 -0.5"  mesh="upperarm_vis_0" material="LinkGrey" type="mesh" contype="0" conaffinity="0" group="1"/>
+                    <geom pos="0 0 0.1762" quat="0.5 0.5 -0.5 -0.5"  mesh="upperarm_vis_1" material="URBlue" type="mesh" contype="0" conaffinity="0" group="1"/>
+                    <geom pos="0 0 0.1762" quat="0.5 0.5 -0.5 -0.5"  mesh="upperarm_vis_2" material="URBlue" type="mesh" contype="0" conaffinity="0" group="1"/>
+                    <geom pos="0 0 0.1762" quat="0.5 0.5 -0.5 -0.5"  mesh="upperarm_vis_3" material="JointGrey" type="mesh" contype="0" conaffinity="0" group="1"/>
+                    <geom pos="0 0 0.1762" quat="0.5 0.5 -0.5 -0.5"  mesh="upperarm_vis_4" material="Black" type="mesh" contype="0" conaffinity="0" group="1"/>
+                    <geom pos="0 0 0.1762" quat="0.5 0.5 -0.5 -0.5"  mesh="upperarm_vis_5" material="JointGrey" type="mesh" contype="0" conaffinity="0" group="1"/>
+                    <geom pos="0 0 0.1762" quat="0.5 0.5 -0.5 -0.5"  mesh="upperarm_vis_6" material="Black" type="mesh" contype="0" conaffinity="0" group="1"/>
+                    <geom pos="0 0 0.1762" quat="0.5 0.5 -0.5 -0.5"  mesh="upperarm_vis_7" material="Black" type="mesh" contype="0" conaffinity="0" group="1"/>
+                    
+                    <geom pos="0 0 0.1762" quat="0.5 0.5 -0.5 -0.5" type="mesh" rgba="0.7 0.7 0.7 1" mesh="upperarm" name="upperarm_col"/>
+                    <body name="forearm_link" pos="-0.6127 0 0">
+                        <inertial pos="-0.285775 0 0.0393" quat="0.707107 0 0.707107 0" mass="3.87" diaginertia="0.110793 0.110793 0.0108844"/>
+                        <joint name="elbow_joint" pos="0 0 0" axis="0 0 1" limited="true" range="-3.14159 3.14159" damping="0.001" frictionloss="0.01" />
+
+                        <geom pos="0 0 0.0393" quat="0.5 0.5 -0.5 -0.5"  mesh="forearm_vis_0" material="JointGrey" type="mesh" contype="0" conaffinity="0" group="1"/>
+                        <geom pos="0 0 0.0393" quat="0.5 0.5 -0.5 -0.5"  mesh="forearm_vis_1" material="Black" type="mesh" contype="0" conaffinity="0" group="1"/>
+                        <geom pos="0 0 0.0393" quat="0.5 0.5 -0.5 -0.5"  mesh="forearm_vis_2" material="URBlue" type="mesh" contype="0" conaffinity="0" group="1"/>
+                        <geom pos="0 0 0.0393" quat="0.5 0.5 -0.5 -0.5"  mesh="forearm_vis_3" material="JointGrey" type="mesh" contype="0" conaffinity="0" group="1"/>
+                        <geom pos="0 0 0.0393" quat="0.5 0.5 -0.5 -0.5"  mesh="forearm_vis_4" material="Black" type="mesh" contype="0" conaffinity="0" group="1"/>
+                        <geom pos="0 0 0.0393" quat="0.5 0.5 -0.5 -0.5"  mesh="forearm_vis_5" material="Black" type="mesh" contype="0" conaffinity="0" group="1"/>
+                        <geom pos="0 0 0.0393" quat="0.5 0.5 -0.5 -0.5"  mesh="forearm_vis_6" material="LinkGrey" type="mesh" contype="0" conaffinity="0" group="1"/>
+
+                        <geom pos="0 0 0.0393" quat="0.5 0.5 -0.5 -0.5" type="mesh" rgba="0.7 0.7 0.7 1" mesh="forearm" name="forearm_col"/>
+                        <body name="wrist_1_link" pos="-0.57155 0 0.17415">
+                            <inertial pos="0 0 0" quat="0.5 0.5 -0.5 0.5" mass="1.96" diaginertia="0.0055125 0.00510825 0.00510825"/>
+                            <joint name="wrist_1_joint" pos="0 0 0" axis="0 0 1" limited="true" range="-6.28319 6.28319" damping="0.001" frictionloss="0.01" />
+                            <geom  pos="0 0 -0.135" quat="0.707107 0.707107 0 0" mesh="wrist1_vis_0" material="JointGrey" type="mesh" contype="0" conaffinity="0" group="1"/>
+                            <geom  pos="0 0 -0.135" quat="0.707107 0.707107 0 0" mesh="wrist1_vis_1" material="URBlue" type="mesh" contype="0" conaffinity="0" group="1"/>
+                            <geom  pos="0 0 -0.135" quat="0.707107 0.707107 0 0" mesh="wrist1_vis_2" material="Black" type="mesh" contype="0" conaffinity="0" group="1"/>
+
+                            <geom pos="0 0 -0.135" quat="0.707107 0.707107 0 0" type="mesh" rgba="0.7 0.7 0.7 1" mesh="wrist1" name="wrist1_col" />
+                            <body name="wrist_2_link" pos="0 -0.11985 -2.45816e-11" quat="0.707107 0.707107 0 0">
+                                <inertial pos="0 0 0" quat="0.5 0.5 -0.5 0.5" mass="1.96" diaginertia="0.0055125 0.00510825 0.00510825"/>
+                                <joint name="wrist_2_joint" pos="0 0 0" axis="0 0 1" limited="true" range="-6.28319 6.28319" damping="0.001" frictionloss="0.01" />
+                                <geom pos="0 0 -0.12" mesh="wrist2_vis_0" material="JointGrey" type="mesh" contype="0" conaffinity="0" group="1"/>
+                                <geom pos="0 0 -0.12" mesh="wrist2_vis_1" material="URBlue" type="mesh" contype="0" conaffinity="0" group="1"/>
+                                <geom pos="0 0 -0.12" mesh="wrist2_vis_2" material="Black" type="mesh" contype="0" conaffinity="0" group="1"/>
+                                <geom pos="0 0 -0.12" type="mesh" rgba="0.7 0.7 0.7 1" mesh="wrist2" name="wrist2_col" />
+                                
+                                <body name="wrist_3_link" pos="0 0.11655 -2.39048e-11" quat="0.707107 -0.707107 0 0">
+                                    <inertial pos="0 0 -0.025" quat="0.5 0.5 -0.5 0.5" mass="0.202" diaginertia="0.000204525 0.000144346 0.000144346"/>
+                                    <joint name="wrist_3_joint" pos="0 0 0" axis="0 0 1" limited="true" range="-6.28319 6.28319" damping="0.001" frictionloss="0.01" />
+				                    <geom pos="0 0 -0.1168" quat="0.707107 0.707107 0 0" material="LinkGrey" mesh="wrist3_vis" type="mesh" contype="0" conaffinity="0" group="1"/>
+                                    <geom pos="0 0 -0.1168" quat="0.707107 0.707107 0 0" type="mesh" rgba="0.7 0.7 0.7 1" mesh="wrist3" name="wrist3_col" />
+                                    <body name="right_hand" pos="0 0 0" >
+                                        <!-- This camera points out from the eef. -->
+                                        <camera mode="fixed" name="eye_in_hand" pos="-0.055 0 0" quat="0 -0.707108 0.707108 0" fovy="75"/>
+                                        <geom mesh="camera_vis" rgba="1 0 0 0" material="LinkGrey" pos="-0.055 0 0.025" quat="0.707108 0 0 0.707108" type="mesh" contype="0" conaffinity="0" group="1"/>
+                                        <geom pos="-0.055 0 0.0125" quat="0 0.707108 0.707108 0" size="0.045 0.0125 0.0125" type="box" name="camera_col"/>
+                                        <!-- To add gripper -->
+                                    </body>
+                                </body>
+                            </body>
+                        </body>
+                    </body>
+                </body>
+            </body>
+        </body>
+    </worldbody>
+</mujoco>
