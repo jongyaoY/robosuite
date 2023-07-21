@@ -25,13 +25,11 @@ class UR10e(ManipulatorModel):
 
     @property
     def default_controller_config(self):
-        return "osc_pose"
+        return "default_ur10e"
 
     @property
     def init_qpos(self):
         return np.array([3.14, -2.07, 2.23, -0.31, 1.32, -1.7])
-    #     return np.array([ 3.29120607, -0.76898365,  0.83065301,  1.50912697,  1.57079633,
-    #    -2.99197924])
 
     @property
     def base_xpos_offset(self):
