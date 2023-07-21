@@ -1,0 +1,59 @@
+<mujoco model="ev_charger_plug">
+    <asset>
+        <mesh name="robotiq_ft300_vis" file="meshes/robotiq_ft300/robotiq_ft300_vis.STL" />
+        <mesh name="robotiq_ft300_col" file="meshes/robotiq_ft300/robotiq_ft300_col.STL" />
+        <mesh name="robotiq_ft300_COUPLING_vis" file="meshes/robotiq_ft300/robotiq_ft300-G-062-COUPLING_vis.STL" />
+        <mesh name="robotiq_ft300_COUPLING_col" file="meshes/robotiq_ft300/robotiq_ft300-G-062-COUPLING_col.STL" />
+        
+        <mesh name="plug_vis" file="meshes/ccs_type2_plug/visual/ccs_type2_plug_vis.stl"/>
+        <mesh name="plug_col_handle" file="meshes/ccs_type2_plug/collision/ccs_type2_plug_col_hanle.stl"/>
+        <mesh name="plug_col_tip" file="meshes/ccs_type2_plug/collision/ccs_type2_plug_col_tip.stl"/>
+
+        <material name="silver" specular="1" shininess="0.5" reflectance="1" emission="0.25" rgba="0.82 0.82 0.82 1"/>
+        <material name="grey" specular="1" shininess="0.5" reflectance="1" emission="0.1" rgba="0.5 0.5 0.5 1"/>
+        <material name="blue" specular="1" shininess="0.5" reflectance="1" emission="0" rgba="0.678 0.847 0.902 1"/>
+        <material name="black" specular="1" shininess="0.5" reflectance="1" emission="0" rgba="0.2 0.2 0.2 1"/>
+    </asset>
+    <worldbody>
+
+
+        <body name="plug_gripper" pos="0 0 0" axisangle="1 0 0 0">
+            <inertial diaginertia="0 0 0" mass="0" pos="0 0 0" />
+
+            <body name="force_torque_sensor" pos="0 0 0.0365">
+                <inertial diaginertia="0 0 0" mass="0" pos="0 0 0" />
+                <geom name="ft_cop_vis" contype="0" conaffinity="0" group="1" pos="0 0 -0.0415" axisangle="1 0 0 0" type="mesh" rgba="0.4 0.4 0.4 1" mesh="robotiq_ft300_COUPLING_vis" />
+                <geom name="ft_cop_col" pos="0 0 -0.0415" axisangle="1 0 0 0" type="mesh" rgba="0.4 0.4 0.4 1" mesh="robotiq_ft300_COUPLING_col" />
+                <geom name="ft_vis" contype="0" conaffinity="0" group="1" pos="0 0 0" quat="0 0 -1 0" type="mesh" rgba="0.2 0.2 0.2 1" mesh="robotiq_ft300_vis" />
+                <geom name="ft_col" pos="0 0 0" quat="0 0 -1 0" type="mesh" rgba="0.2 0.2 0.2 1" mesh="robotiq_ft300_col" />
+
+                <body name="plug" pos="0 0 0" >
+                    <inertial diaginertia="0 0 0" mass="0" pos="0 0 0" />
+                    <site name="ft_frame" pos="0 0 0" size="0.01 0.01 0.01" rgba="1 0 0 0.5" type="sphere" group="0" />
+                    <site name="ft_x" pos="0.1 0 0" size="0.005 .1"  quat="0.707105  0 0.707108 0 " rgba="1 0 0 0.2" type="cylinder" group="0"/>
+                    <site name="ft_y" pos="0 0.1 0" size="0.005 .1" quat="0.707105 0.707108 0 0" rgba="0 1 0 0.2" type="cylinder" group="0"/>
+                    <site name="ft_z" pos="0 0 0.1" size="0.005 .1" quat="1 0 0 0" rgba="0 0 1 0.2" type="cylinder" group="0"/>
+                    <body pos="0 0 0.0845">
+                        <inertial diaginertia="0 0 0" mass="0" pos="0 0 0" />
+                        <geom axisangle="0 0 1 1.57" name="plug_vis" contype="0" conaffinity="0" group="1" type="mesh" mesh="plug_vis" material="blue"/>
+                        <geom axisangle="0 0 1 1.57" name="plug_col_handle" type="mesh" mesh="plug_col_handle" group="0" material="grey"/>
+                        <geom axisangle="0 0 1 1.57" name="plug_col_tip" type="mesh" mesh="plug_col_tip" group="0" material="silver"/>
+                    
+                        <body name="eef" pos="0 0 0" quat="1 0 0 0" >
+                            <site name="grip_site" pos="0 0 0" size="0.01 0.01 0.01" rgba="1 0 0 0.5" type="sphere" group="0"/>
+                            <site name="ee_x" pos="0.1 0 0" size="0.005 .1"  quat="0.707105  0 0.707108 0 " rgba="1 0 0 0.2" type="cylinder" group="1"/>
+                            <site name="ee_y" pos="0 0.1 0" size="0.005 .1" quat="0.707105 0.707108 0 0" rgba="0 1 0 0.2" type="cylinder" group="1"/>
+                            <site name="ee_z" pos="0 0 0.1" size="0.005 .1" quat="1 0 0 0" rgba="0 0 1 0.2" type="cylinder" group="1"/>
+                            <!-- This site was added for visualization. -->
+                            <site name="grip_site_cylinder" pos="0 0 0" size="0.005 .1" rgba="0 1 0 0.3" type="cylinder" group="0"/>
+                        </body>
+                    </body>
+                </body>
+            </body>
+        </body>
+    </worldbody>
+    <sensor>
+        <force name="force_ee" site="ft_frame"/>
+        <torque name="torque_ee" site="ft_frame"/>
+    </sensor>
+</mujoco>
