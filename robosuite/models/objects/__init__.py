@@ -18,6 +18,8 @@ from .xml_objects import (
     PlateWithHoleObject,
     DoorObject,
 )
+from .ev_sockets import EVChagerSocket
+from .socket_board import SocketBoard
 from .primitive import *
 from .composite import *
 from .composite_body import *

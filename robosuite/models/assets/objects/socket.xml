@@ -1,0 +1,30 @@
+<mujoco model="socket">
+  <default>
+    <default class="visual">
+      <geom group="1" type="mesh" contype="0" conaffinity="0"/>
+    </default>
+    <default class="collision">
+      <geom group="0" type="mesh"/>
+    </default>
+  </default>
+  <asset>
+    <texture file="../textures/black-plastic.png" type="2d" name="black-plastic"/>
+    <material name="black_plastic" reflectance="0.0" shininess="1" specular="0.1" texrepeat="3 3" texture="black-plastic" texuniform="true" />
+    <mesh file="meshes/socket_vis.stl" name="socket_vis"/>
+  </asset>
+  <worldbody>
+    <body>
+      <body name="object">
+        <geom pos="0 0 0" mesh="socket_vis" type="mesh"
+        class = "visual" material = "black_plastic"/>
+      </body>
+      <site rgba="1. 0 0 0.5" size="0.005" pos="0 0 0.0" name="front_site"/>
+      <!-- plug tip length -->
+      <site rgba="1. 0 0 0.5" size="0.005" pos="0 0 -0.0346" name="end_site"/>
+
+      <site rgba="0 0 0 0" size="0.005" pos="0 0 -0.034" name="bottom_site"/>
+      <site rgba="0 0 0 0" size="0.005" pos="0 0 0.0" name="top_site"/>
+      <site rgba="0 0 0 0" size="0.005" pos="0.03 0.03 0" name="horizontal_radius_site" />
+    </body>
+  </worldbody>
+</mujoco>
