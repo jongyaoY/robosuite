@@ -81,7 +81,7 @@ def load_object(
 
     elif geom_type == "mesh":
         filename = meshes[geom.attrib["mesh"]]["file"]
-        filename = os.path.splitext(filename)[0] + ".obj"
+        # filename = os.path.splitext(filename)[0] + ".obj"
 
         component = nvisii.import_scene(
             file_path=filename,
