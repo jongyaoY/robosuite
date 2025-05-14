@@ -16,6 +16,7 @@ from .xml_objects import (
     CerealVisualObject,
     CanVisualObject,
     PlateWithHoleObject,
+    SocketHexObject,
     DoorObject,
 )
 from .ev_sockets import EVChagerSocket

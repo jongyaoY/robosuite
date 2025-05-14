@@ -13,6 +13,8 @@ from .wiping_gripper import WipingGripper
 from .null_gripper import NullGripper
 from .ev_charger_plug import EVChargerPlug
 from .primitive_gripper import PrimitiveGripper
+from .bota_cylinder_gripper import BotaCylinderGripper
+from .bota_hex_gripper import BotaHexGripper
 
 GRIPPER_MAPPING = {
     "RethinkGripper": RethinkGripper,
@@ -26,6 +28,8 @@ GRIPPER_MAPPING = {
     "RobotiqThreeFingerDexterousGripper": RobotiqThreeFingerDexterousGripper,
     "EVChargerPlug": EVChargerPlug,
     "PrimitiveGripper": PrimitiveGripper,
+    "BotaCylinderGripper": BotaCylinderGripper,
+    "BotaHexGripper": BotaHexGripper,
     None: NullGripper,
 }
 

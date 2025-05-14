@@ -297,3 +297,18 @@ class DoorObject(MujocoXMLObject):
         dic = super().important_sites
         dic.update({"handle": self.naming_prefix + "handle"})
         return dic
+
+
+class SocketHexObject(MujocoXMLObject):
+    """
+    A block with a hexagon hole in the center (used in PegInHole)
+    """
+
+    def __init__(self, name):
+        super().__init__(
+            xml_path_completion("objects/socket_hex.xml"),
+            name=name,
+            joints=None,
+            obj_type="all",
+            duplicate_collision_geoms=True,
+        )

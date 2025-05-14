@@ -11,12 +11,15 @@
     <texture file="../textures/black-plastic.png" type="2d" name="black-plastic"/>
     <material name="black_plastic" reflectance="0.0" shininess="1" specular="0.1" texrepeat="3 3" texture="black-plastic" texuniform="true" />
     <mesh file="meshes/socket_vis.stl" name="socket_vis"/>
+    <mesh file="meshes/socket_board_vis.stl" name="socket_board_vis"/>
   </asset>
   <worldbody>
     <body>
       <body name="object">
         <geom pos="0 0 0" mesh="socket_vis" type="mesh"
         class = "visual" material = "black_plastic"/>
+        <geom pos="0 0 0" mesh="socket_board_vis" type="mesh"
+        class = "visual"/>
       </body>
       <site rgba="1. 0 0 0.5" size="0.005" pos="0 0 0.0" name="front_site"/>
       <!-- plug tip length -->

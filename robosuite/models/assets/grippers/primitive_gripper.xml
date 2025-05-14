@@ -2,8 +2,10 @@
     <worldbody>
         <body name="primitive_gripper" pos="0 0 0">
             <site name="ft_frame" pos="0 0 0" size="0.01 0.01 0.01" rgba="1 0 0 1" type="sphere" group="1"/>
+            <!-- <inertial pos="0 0 0" mass="0." /> -->
             <inertial pos="0 0 0" mass="3e-1" diaginertia="1e-2 1e-2 1e-2" />
             <body name="eef" pos="0 0 0.05" quat="0.707105 0 0 -0.707105">
+                <!-- <inertial pos="0 0 0" mass="0.00" /> -->
                 <inertial pos="0 0 0" mass="3e-2" diaginertia="1e-4 1e-4 1e-4" />
                 
                 <site name="grip_site" pos="0 0 0" size="0.01 0.01 0.01" rgba="1 1 0 0.5" type="sphere" group="1"/>
