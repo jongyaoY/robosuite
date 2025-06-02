@@ -2,7 +2,7 @@
     
     <asset>
         <mesh name="bft_sens_m8" file="meshes/bft_sens_m8/vis.stl"/>
-        <mesh name="hex_tool_tip" file="meshes/primitive_tools/plug_tip_hex_collision.stl"/>
+        <mesh name="hex_tool_tip" file="meshes/primitive_tools/plug_tip_hex_62mm_col.stl"/>
         <mesh name="tool_base" file="meshes/primitive_tools/plug_base_collision.stl"/>
     </asset>
     
@@ -28,12 +28,12 @@
                     <site name="grip_site_cylinder" pos="0 0 0" size="0.005 10" rgba="0 1 0 0.3" type="cylinder" group="1"/>
                 </body>
                 <!-- Add cylinder geom for collision and visualization -->
-                <geom name="base_geom_col" pos="0 0 0.01" type="mesh" size="0.045 0.01" mesh="tool_base" group="0"/>
+                <geom name="base_geom_col" pos="0 0 0.01" type="mesh" mesh="tool_base" group="0"/>
                 <geom name="base_geom_vis" pos="0 0 0.01" type="cylinder" size="0.045 0.01" rgba="0.5
                 1.0 0.5 1" group="1" contype="0" conaffinity="0"/>
-                <geom name="hex_tool_tip_geom_col" pos="0 0 0.01" type="mesh" mesh="hex_tool_tip" rgba="0.5
+                <geom name="hex_tool_tip_geom_col" pos="0 0 0.02" type="mesh" mesh="hex_tool_tip" rgba="0.5
                 0.5 0.5 1" group="0"/>
-                <geom name="hex_tool_tip_geom_vis" pos="0 0 0.01" type="mesh" mesh="hex_tool_tip" rgba="0.5
+                <geom name="hex_tool_tip_geom_vis" pos="0 0 0.02" type="mesh" mesh="hex_tool_tip" rgba="0.5
                 1.0 0.5 1" group="1" contype="0" conaffinity="0"/>
             </body>
         </body>
