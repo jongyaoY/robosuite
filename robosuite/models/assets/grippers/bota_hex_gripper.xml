@@ -3,7 +3,7 @@
     <asset>
         <mesh name="bft_sens_m8" file="meshes/bft_sens_m8/vis.stl"/>
         <mesh name="hex_tool_tip" file="meshes/primitive_tools/plug_tip_hex_62mm_col.stl"/>
-        <mesh name="tool_base" file="meshes/primitive_tools/plug_base_collision.stl"/>
+        <mesh name="tool_base" file="meshes/primitive_tools/plug_base_collision_simplified.stl"/>
     </asset>
     
     <worldbody>
