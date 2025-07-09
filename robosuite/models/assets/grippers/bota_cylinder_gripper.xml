@@ -2,7 +2,7 @@
     
     <asset>
         <mesh name="bft_sens_m8" file="meshes/bft_sens_m8/vis.stl"/>
-        <mesh name="cylinder_tool_tip" file="meshes/primitive_tools/plug_tip_cylinder_62mm_col.stl"/>
+        <mesh name="cylinder_tool_tip" file="meshes/primitive_tools/plug_tip_cylinder_50mm_col.stl"/>
         <mesh name="tool_base" file="meshes/primitive_tools/plug_base_collision_simplified.stl"/>
     </asset>
     
