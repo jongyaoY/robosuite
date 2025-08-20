@@ -136,8 +136,8 @@
                                     <body name="right_hand" pos="0 0 0" >
                                         <!-- This camera points out from the eef. -->
                                         <camera mode="fixed" name="eye_in_hand" pos="-0.055 0 0" quat="0 -0.707108 0.707108 0" fovy="75"/>
-                                        <geom mesh="camera_vis" rgba="1 0 0 0" material="LinkGrey" pos="-0.055 0 0.025" quat="0.707108 0 0 0.707108" type="mesh" contype="0" conaffinity="0" group="1"/>
-                                        <geom pos="-0.055 0 0.0125" quat="0 0.707108 0.707108 0" size="0.045 0.0125 0.0125" type="box" name="camera_col"/>
+                                        <!-- <geom mesh="camera_vis" rgba="1 0 0 0" material="LinkGrey" pos="-0.055 0 0.025" quat="0.707108 0 0 0.707108" type="mesh" contype="0" conaffinity="0" group="1"/> -->
+                                        <!-- <geom pos="-0.055 0 0.0125" quat="0 0.707108 0.707108 0" size="0.045 0.0125 0.0125" type="box" name="camera_col"/> -->
                                         <!-- To add gripper -->
                                     </body>
                                 </body>
