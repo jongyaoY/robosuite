@@ -7,6 +7,7 @@ from copy import deepcopy
 
 import numpy as np
 
+from .force_controller import ForceController
 from .interpolators.linear_interpolator import LinearInterpolator
 from .joint_pos import JointPositionController
 from .joint_tor import JointTorqueController
@@ -118,7 +119,8 @@ def controller_factory(name, params):
             policy_freq=params["policy_freq"],
             ramp_ratio=params["ramp_ratio"],
         )
-
+    if name == "FORCE":
+        return ForceController(**params)
     if name == "OSC_POSE":
         ori_interpolator = None
         if interpolator is not None:

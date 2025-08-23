@@ -1,0 +1,16 @@
+{
+  "type": "FORCE",
+  "input_max": 1,
+  "input_min": -1,
+  "output_max": [5, 5, 5, 0.5, 0.5, 0.5],
+  "output_min": [-5, -5, -5, -0.5, -0.5, -0.5],
+  "kp": 1,
+  "kdv": 100,
+  "kda": 10,
+  "damping_ratio": 1.1,
+  "buffer_len": 10,
+  "position_limits": null,
+  "orientation_limits": null,
+  "interpolation": null,
+  "ramp_ratio": 0.2
+}
