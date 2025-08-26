@@ -1,0 +1,46 @@
+<mujoco model="primitive_hand">
+    
+    <asset>
+        <mesh name="bft_sens_m8" file="meshes/bft_sens_m8/vis.stl"/>
+        <mesh name="tool_tip" file="meshes/primitive_tools/plug_tip_square_62mm_col.stl"/>
+        <mesh name="tool_base" file="meshes/primitive_tools/plug_base_collision_simplified.stl"/>
+    </asset>
+    
+    <worldbody>
+        <body name="bota_sensor" pos="0 0 0">
+            <site name="ft_frame" pos="0 0 0.035" size="0.01 0.01 0.01" rgba="1 0 0 1" type="sphere" group="1"/>
+            <geom group="1" name="bft_sens_m8_vis" type="mesh" mesh="bft_sens_m8" pos="0 0 0" quat="1 0 0 0" rgba="0.8 0.8 0.8 1"/>
+            <geom group="0" size="0.035 0.014" pos="0 0 0.011" type="cylinder" rgba="0.6902 0.61176 0.52941 1"/>
+            <geom group="0" size="0.0065 0.016" pos="0 0.051 0.0115" quat="0.707388 0.706825 0 0" type="cylinder" rgba="0.6902 0.61176 0.52941 1"/>
+            <geom group="0" size="0.0315 0.005" pos="0 0 0.03" type="cylinder" rgba="0.6902 0.61176 0.52941 1"/>
+            <!-- <inertial pos="0 0 0" mass="0." /> -->
+            <inertial pos="0 0 0" mass="3e-1" diaginertia="1e-2 1e-2 1e-2" />
+            <body name="hex_tool" pos="0 0 0.035">
+                <body name="eef" pos="0 0 0.0">
+                    <!-- <inertial pos="0 0 0" mass="0.00" /> -->
+                    <inertial pos="0 0 0" mass="3e-2" diaginertia="1e-4 1e-4 1e-4" />
+                    
+                    <site name="grip_site" pos="0 0 0" size="0.01 0.01 0.01" rgba="1 1 0 0.5" type="sphere" group="1"/>
+                    <site name="ee_x" pos="0.1 0 0" size="0.005 .1"  quat="0.707105  0 0.707108 0 " rgba="1 0 0 0.5" type="cylinder" group="1"/>
+                    <site name="ee_y" pos="0 0.1 0" size="0.005 .1" quat="0.707105 0.707108 0 0" rgba="0 1 0 0.5" type="cylinder" group="1"/>
+                    <site name="ee_z" pos="0 0 0.1" size="0.005 .1" quat="1 0 0 0" rgba="0 0 1 0.5" type="cylinder" group="1"/>
+                    <!-- This site was added for visualization. -->
+                    <site name="grip_site_cylinder" pos="0 0 0" size="0.005 10" rgba="0 1 0 0.3" type="cylinder" group="1"/>
+                </body>
+                <!-- Add cylinder geom for collision and visualization -->
+                <geom name="base_geom_col" pos="0 0 0.01" type="mesh" mesh="tool_base" group="0"/>
+                <geom name="base_geom_vis" pos="0 0 0.01" type="cylinder" size="0.045 0.01" rgba="0.5
+                1.0 0.5 1" group="1" contype="0" conaffinity="0"/>
+                <geom name="tool_tip_geom_col" pos="0 0 0.02" type="mesh" mesh="tool_tip" rgba="0.5
+                0.5 0.5 1" group="0"/>
+                <geom name="tool_tip_geom_vis" pos="0 0 0.02" type="mesh" mesh="tool_tip" rgba="0.5
+                1.0 0.5 1" group="1" contype="0" conaffinity="0"/>
+            </body>
+        </body>
+    </worldbody>
+    <sensor>
+        <force name="force_ee" site="ft_frame"/>
+        <torque name="torque_ee" site="ft_frame"/>
+    </sensor>
+</mujoco>
+

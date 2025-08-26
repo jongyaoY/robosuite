@@ -13,7 +13,7 @@ from .wiping_gripper import WipingGripper
 from .null_gripper import NullGripper
 from .ev_charger_plug import EVChargerPlug
 from .primitive_gripper import PrimitiveGripper
-from .bota_grippers import BotaHexGripper, BotaCylinderGripper
+from .bota_grippers import BotaHexGripper, BotaCylinderGripper, BotaPrimitiveGripper
 
 GRIPPER_MAPPING = {
     "RethinkGripper": RethinkGripper,
@@ -29,6 +29,7 @@ GRIPPER_MAPPING = {
     "PrimitiveGripper": PrimitiveGripper,
     "BotaCylinderGripper": BotaCylinderGripper,
     "BotaHexGripper": BotaHexGripper,
+    "BotaPrimitiveGripper": BotaPrimitiveGripper,
     None: NullGripper,
 }
 
